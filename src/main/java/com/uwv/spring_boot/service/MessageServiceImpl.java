@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MessageServiceImpl implements MessageService{
@@ -25,5 +26,15 @@ public class MessageServiceImpl implements MessageService{
     @Override
     public Message save(Message message) {
         return messageRepository.save( message);
+    }
+
+    @Override
+    public Optional<Message> findById(UUID uuid) {
+        return messageRepository.findById( uuid);
+    }
+
+    @Override
+    public void deleteById(UUID uuid) {
+        messageRepository.deleteById( uuid);
     }
 }
