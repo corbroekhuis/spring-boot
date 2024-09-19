@@ -8,14 +8,6 @@ import org.springframework.context.ApplicationContext;
 public class Application {
 
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-
-        for (String beanDefinitionName : applicationContext.getBeanDefinitionNames()) {
-            System.out.println(beanDefinitionName);
-            if (beanDefinitionName.startsWith("controller")) {
-                Object object = applicationContext.getBean(beanDefinitionName);
-                System.out.println("Stop here");
-            }
-        }
+		SpringApplication.run(Application.class, args);
 	}
 }

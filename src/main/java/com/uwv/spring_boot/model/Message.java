@@ -27,6 +27,14 @@ public class Message {
         this.message = message;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -38,7 +46,8 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                "message='" + message + '\'' +
+                "id=" + id +
+                ", message='" + message + '\'' +
                 '}';
     }
 }
