@@ -5,6 +5,14 @@
 <br/><br/>
 <br/><br/>
 
+## Json serialization (annotations in model classes)
+* [https://www.baeldung.com/jackson-annotations](https://www.baeldung.com/jackson-annotations)
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+
 ## Java Faker dependency
 ```xml
 		<dependency>
@@ -70,9 +78,7 @@ public class Util {
 
 <br/><br/>
 
-```java
-@Tag
-```
+* @Tag
 
 ```java
 @RestController
@@ -86,10 +92,8 @@ public class TransactionController {
 
 <br/><br/>
 
-```java
-@Operation
-@ApiResponses
-```
+* @Operation
+* @ApiResponses
 
 ```java
 @Operation(summary = "Send transaction as JSON and store in database")
@@ -107,5 +111,22 @@ public ResponseEntity<Message> transactionAsJson(@RequestBody Transaction transa
 ```
 
 <br/><br/>
+
+## Spring Context
+
+```java
+
+        ApplicationContext applicationContext = SpringApplication.run(MolvenoLakeResortApplication.class, args);
+
+        // Show what is autowired into ReservationController
+        for (String beanDefinitionName : applicationContext.getBeanDefinitionNames()) {
+            System.out.println(beanDefinitionName);
+            if (beanDefinitionName.startsWith("??????")) {
+                Object object = applicationContext.getBean(beanDefinitionName);
+                System.out.println("Stop here");
+            }
+        }
+```
+
 
 
