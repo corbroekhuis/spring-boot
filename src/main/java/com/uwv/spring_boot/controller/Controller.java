@@ -2,6 +2,8 @@ package com.uwv.spring_boot.controller;
 
 import com.uwv.spring_boot.model.Message;
 import com.uwv.spring_boot.service.MessageService;
+import com.uwv.spring_boot.service.SofiCheckService1;
+import com.uwv.spring_boot.service.SofiCheckService2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +24,17 @@ import java.util.UUID;
 public class Controller {
 
     private MessageService messageService;
+    private SofiCheckService1 sofiCheckService1;
+    private SofiCheckService2 sofiCheckService2;
 
     @Autowired
     public Controller(
-            MessageService messageService){
+            MessageService messageService,
+            SofiCheckService1 sofiCheckService1,
+            SofiCheckService2 sofiCheckService2){
         this.messageService = messageService;
+        this.sofiCheckService1 = sofiCheckService1;
+        this.sofiCheckService2 = sofiCheckService2;
     }
 
     // http://localhost:8080/api/helloworld
