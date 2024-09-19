@@ -11,4 +11,6 @@ public class MyConfiguration {
     public SofiCheckService1 sofiCheckService1(){
         return  new SofiCheckService1();
     }
+
+
 }
