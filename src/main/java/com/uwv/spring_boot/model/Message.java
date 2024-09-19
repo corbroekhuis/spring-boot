@@ -1,5 +1,6 @@
 package com.uwv.spring_boot.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @JsonProperty("BERICHT")
     @Column(name="bericht")
     private String message;
 

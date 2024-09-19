@@ -9,5 +9,6 @@ import java.util.UUID;
 @Repository
 public interface MessageRepository extends CrudRepository<Message, UUID> {
 
+    Message findByMessage( String message);
 
 }
