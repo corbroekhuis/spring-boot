@@ -15,6 +15,7 @@
 * [@Qualifier](#qualifier)
 * [Handige properties](#properties)
 * [Curl commando voor een POST request](#post)
+* [Autowiring](#autowiring)
 
 <br/><br/>
 <br/><br/>
@@ -239,3 +240,20 @@ curl -X 'POST' \
 ```
 
 * [Top](#top)
+
+## <a id="autowiring"></a>Autowiring
+
+Spring inspecteert alle classes in alle packages en zoekt naar Spring annotaties, bijv: <br>
+* @RestController
+* @Component
+* @Service
+* @Configuration
+* @Repository. <br>
+
+Spring bouwt een boomstructuur van alle singleton objecten van alle gevonden classes (de Application Context). <br>
+Spring gebruikt hiervoor 'autowiring'.
+
+[![Alt text](./autowiring.png)](## "Where did the image go..")
+
+* [Top](#top)
+* 
