@@ -10,4 +10,5 @@ public interface MessageService {
     Message save( Message message);
     Optional<Message> findById(UUID uuid);
     void deleteById( UUID uuid);
+    Optional<Message> findByMessage(String message);
 }

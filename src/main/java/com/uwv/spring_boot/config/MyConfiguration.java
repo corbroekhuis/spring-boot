@@ -10,12 +10,11 @@ public class MyConfiguration {
 
     @Bean(value="sofis1")
     public SofiCheckService1 sofiCheckService1(){
-        return  new SofiCheckService1();
+        return new SofiCheckService1();
     }
 
     @Bean
     public ObjectMapper objectMapper(){
         return new ObjectMapper();
     }
-
 }

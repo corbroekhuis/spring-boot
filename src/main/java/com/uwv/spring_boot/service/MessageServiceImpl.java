@@ -37,4 +37,9 @@ public class MessageServiceImpl implements MessageService{
     public void deleteById(UUID uuid) {
         messageRepository.deleteById( uuid);
     }
+
+    @Override
+    public Optional<Message> findByMessage(String message) {
+        return messageRepository.findByMessage(message);
+    }
 }

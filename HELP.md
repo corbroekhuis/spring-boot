@@ -4,6 +4,22 @@
 <br/><br/>
 <br/><br/>
 <br/><br/>
+#### <a id="top"></a>
+
+
+
+* [Java Faker (fake data)](#faker)
+* [Swagger (OPENAPI) annotations](#swagger.annotations)
+* [Spring Context](#spring.context)
+* [@Bean](#bean)
+* [@Qualifier](#qualifier)
+* [Handige properties](#properties)
+* [Curl commando voor een POST request](#post)
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
 
 ## Json serialization (annotations in model classes)
 * [https://www.baeldung.com/jackson-annotations](https://www.baeldung.com/jackson-annotations)
@@ -13,7 +29,11 @@
 <br/><br/>
 <br/><br/>
 
-## Java Faker dependency
+* [Top](#top)
+## <a id="faker"></a>Java Faker
+
+Dependency:
+
 ```xml
 		<dependency>
 			<groupId>com.github.javafaker</groupId>
@@ -73,7 +93,8 @@ public class Util {
 }
 ```
 
-## Swagger annotations
+* [Top](#top)
+## <a id="swagger.annotations"></a>Swagger annotations
 * [https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations](https://github.com/swagger-api/swagger-core/wiki/Swagger-2.X---Annotations)
 
 <br/><br/>
@@ -112,7 +133,8 @@ public ResponseEntity<Message> transactionAsJson(@RequestBody Transaction transa
 
 <br/><br/>
 
-## Spring Context
+* [Top](#top)
+## <a id="spring.context"></a>Spring Context
 
 ```java
 
@@ -128,5 +150,92 @@ public ResponseEntity<Message> transactionAsJson(@RequestBody Transaction transa
         }
 ```
 
+* [Top](#top)
+## <a id="bean"></a>@Bean
+Voorbeeld @Bean annotatie
 
+```java
+@Configuration
+public class MyConfiguration {
 
+    @Bean(value="sofis1")
+    public SofiCheckService1 sofiCheckService1(){
+        return new SofiCheckService1();
+    }
+
+    @Bean
+    public ObjectMapper objectMapper(){
+        return new ObjectMapper();
+    }
+}
+```
+
+De ObjectMapper kan je autowiren middels:
+
+```java
+    private PrettyObjectMapper objectMapper;
+
+    @Autowired
+    public Controller( PrettyObjectMapper objectMapper){
+        this.objectMapper = objectMapper;
+    }
+```
+
+* [Top](#top)
+## <a id="qualifier"></a>@Qualifier
+
+Je gebruikt deze annotatie als er bij een interface meer dan één implementatie is.<br>
+Spring kan dan zelf geen keuze maken.
+```java
+@Service
+@Qualifier("oracle.datasource")
+public class OracleDataSource implements DataSource{
+
+    @Override
+    public Iterable<Message> findAll(){
+        Message[] messages = { new Message("Oracle is great!!!"), new Message("Oracle is great!!!")};
+        return Arrays.asList( messages);
+    }
+}
+```
+
+* [Top](#top)
+## <a id="properties"></a>Handige properties
+
+```properties
+# Default: 8080
+server.port=8081
+
+# Toon sql statements
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Enable console
+spring.h2.console.enabled=true
+spring.datasource.driverClassName=org.h2.Driver
+# Embedded
+spring.datasource.url=jdbc:h2:mem:testdb
+# Persistent
+spring.datasource.url=jdbc:h2:file:C:/Temp/testdb;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=TRUE
+spring.datasource.username=sa
+spring.datasource.password=sa
+# Genereer schema
+spring.jpa.hibernate.ddl-auto=none|validate|update|create-drop
+
+```
+
+* [Top](#top)
+## <a id="post"></a>Curl commando voor een POST request
+
+```shell
+curl -X 'POST' \
+'http://localhost:8080/api/message' \
+-H 'accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+"id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+"BERICHT": "Dit is het zoveelste bericht"
+}'
+```
+
+* [Top](#top)
