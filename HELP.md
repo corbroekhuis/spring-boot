@@ -187,6 +187,7 @@ De ObjectMapper kan je autowiren middels:
 
 Je gebruikt deze annotatie als er bij een interface meer dan één implementatie is.<br>
 Spring kan dan zelf geen keuze maken.
+
 ```java
 @Service
 @Qualifier("oracle.datasource")
@@ -198,6 +199,15 @@ public class OracleDataSource implements DataSource{
         return Arrays.asList( messages);
     }
 }
+```
+
+Bij het autowiren moet je de `@Qualifier` ook gebruiken
+
+```java
+    @Autowired
+    public OracleController(@Qualifier("oracle.datasource") DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 ```
 
 * [Top](#top)
@@ -256,4 +266,3 @@ Spring gebruikt hiervoor 'autowiring'.
 [![Alt text](./autowiring.png)](## "Where did the image go..")
 
 * [Top](#top)
-* 
